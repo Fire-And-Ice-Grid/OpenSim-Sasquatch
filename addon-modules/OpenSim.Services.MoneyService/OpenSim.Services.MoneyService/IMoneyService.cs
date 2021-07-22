@@ -25,18 +25,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-using log4net.Config;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using OpenSim.Framework.Servers;
+using OpenSim.Framework.Servers.HttpServer;
+
+using Nini.Config;
+
 
 namespace OpenSim.Services.MoneyService
 {
-    class Program
+    public interface IMoneyService
     {
-        public static void Main(string[] args)
-        {
-            XmlConfigurator.Configure();
-            MoneyServerBase app = new MoneyServerBase();
-            app.Startup();
-            app.Work();
-        }
+        Dictionary<string, string> GetSessionDic();
+        Dictionary<string, string> GetSecureSessionDic();
+        Dictionary<string, string> GetWebSessionDic();
+
+        //
+        IConfig GetServerConfig();
+        IConfig GetCertConfig();
+        bool IsCheckClientCert();
     }
 }

@@ -134,10 +134,8 @@ namespace OpenSim.Services.MoneyService
             {
                 return dbm.Manager.getBalance(userID);
             }
-#pragma warning disable CS0168 // Variable ist deklariert, wird jedoch niemals verwendet
             catch (MySql.Data.MySqlClient.MySqlException e)
             {
-#pragma warning restore CS0168 // Variable ist deklariert, wird jedoch niemals verwendet
                 dbm.Manager.Reconnect();
                 return dbm.Manager.getBalance(userID);
             }

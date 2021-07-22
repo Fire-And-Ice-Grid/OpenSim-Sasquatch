@@ -41,11 +41,9 @@ using Nwc.XmlRpc;
 
 using OpenMetaverse;
 using OpenSim.Framework;
-using OpenSim.Framework.Servers;
 using OpenSim.Framework.Servers.HttpServer;
 using OpenSim.Data.MySQL.MoneyData;
 using OpenSim.Region.OptionalModules.Currency;
-using OpenSim.Region.Framework.Scenes;
 
 using NSL.Network.XmlRpc;
 using NSL.Certificate.Tools;
@@ -107,7 +105,7 @@ namespace OpenSim.Services.MoneyService
         private long TicksToEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
 
         private IMoneyDBService m_moneyDBService;
-        private IMoneyServiceCore m_moneyCore;
+        private IMoneyService m_moneyCore;
 
         protected IConfig m_server_config;
         protected IConfig m_cert_config;
@@ -129,7 +127,7 @@ namespace OpenSim.Services.MoneyService
         }
 
 
-        public void Initialise(string opensimVersion, IMoneyDBService moneyDBService, IMoneyServiceCore moneyCore)
+        public void Initialise(string opensimVersion, IMoneyDBService moneyDBService, IMoneyService moneyCore)
         {
             //m_opensimVersion = opensimVersion;
             m_moneyDBService = moneyDBService;
